@@ -1,0 +1,64 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# NHSmod11
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Minimal and efficient package to validate that a given NHS number passes the
+modulo 11 check
+(see https://www.datadictionary.nhs.uk/attributes/nhs_number.html for details).
+
+
+## Installation
+
+The development version, which this documentation refers to, can be installed
+from the internal GitLab instance via
+
+```
+if (!require(remotes)) install.packages("remotes")
+
+remotes::install_git(
+    "https://gitlab.phe.gov.uk/Timothy.Taylor/NHSmod11.git",
+    subdir="pkg",
+    dependencies = TRUE,
+    build_vignettes = TRUE
+)
+```
+
+## Example
+
+```{r example}
+library(NHSmod11)
+
+# all of these should be valid
+dat1 <- c("5390502108", "2788584652", "3510670485", "4001126419", "5309741852")
+is_valid_mod11(dat1)
+
+# these are numeric versions of above and should therefore also be valid
+dat2 <- c(5390502108, 2788584652, 3510670485, 4001126419, 5309741852)
+is_valid_mod11(dat2)
+
+# these should all be invalid
+dat3 <- c("5390502107", "2788584651", "3510670484", "4001126418", NA_character_)
+is_valid_mod11(dat3)
+```
+
+## Getting help online
+
+Bug reports and feature requests should be posted on *gitlab* using the
+[*issue* system](https://gitlab.phe.gov.uk/Timothy.Taylor/NHSmod11/issues).
+

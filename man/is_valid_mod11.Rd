@@ -2,11 +2,14 @@
 % Please edit documentation in R/is_valid_number.R
 \name{is_valid_mod11}
 \alias{is_valid_mod11}
+\alias{is_valid_mod11.default}
 \alias{is_valid_mod11.numeric}
 \alias{is_valid_mod11.character}
 \title{Valid NHS number}
 \usage{
 is_valid_mod11(x, ...)
+
+\method{is_valid_mod11}{default}(x, ...)
 
 \method{is_valid_mod11}{numeric}(x, priority = c("speed", "memory"), ...)
 

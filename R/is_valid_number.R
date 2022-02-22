@@ -27,6 +27,19 @@ is_valid_mod11 <- function(x, ...) {
 }
 
 #' @rdname is_valid_mod11
+#' @aliases is_valid_mod11.default
+#' @export
+is_valid_mod11.default <- function(x, ...) {
+    stop(
+        sprintf(
+            "Not implemented for class %s",
+            paste(class(x), collapse = ", ")
+        ),
+        call. = FALSE
+    )
+}
+
+#' @rdname is_valid_mod11
 #' @aliases is_valid_mod11.numeric
 #' @export
 is_valid_mod11.numeric <- function(x, priority = c("speed", "memory"), ...) {

@@ -11,16 +11,14 @@ is_valid_mod11(x, ...)
 
 \method{is_valid_mod11}{default}(x, ...)
 
-\method{is_valid_mod11}{numeric}(x, priority = c("speed", "memory"), ...)
+\method{is_valid_mod11}{numeric}(x, ...)
 
-\method{is_valid_mod11}{character}(x, priority = c("speed", "memory"), ...)
+\method{is_valid_mod11}{character}(x, ...)
 }
 \arguments{
 \item{x}{An R object.}
 
 \item{...}{Not currently used.}
-
-\item{priority}{`[character]` Prioritise "speed" or "memory" usage?}
 }
 \value{
 A Logical vector the same length as `x`.

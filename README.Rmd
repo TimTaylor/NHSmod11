@@ -13,6 +13,9 @@ knitr::opts_chunk$set(
 )
 ```
 
+<span style="color:red"> ***This package has not yet been code reviewed and is not yet used in production. Buyer beware***  </span>
+
+
 # NHSmod11
 
 <!-- badges: start -->
@@ -61,4 +64,3 @@ is_valid_mod11(dat3)
 
 Bug reports and feature requests should be posted on *gitlab* using the
 [*issue* system](https://gitlab.phe.gov.uk/Timothy.Taylor/NHSmod11/issues).
-

@@ -1,4 +1,4 @@
-# from nhsnumber package ()
+# same as from nhsnumber package (https://cran.r-project.org/package=nhsnumber)
 dat_1 <- c(1234567881, 1234567890, 9876543210, 2345678901)
 expected_1 <- c(TRUE, FALSE, TRUE, FALSE)
 expect_identical(is_valid_mod11(dat_1), expected_1)

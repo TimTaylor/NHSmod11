@@ -49,6 +49,5 @@ is_valid_mod11(dat3)
 
 ## Getting help online
 
-Bug reports and feature requests should be posted on *gitlab* using the
-[*issue*
-system](https://gitlab.phe.gov.uk/Timothy.Taylor/NHSmod11/issues).
+Bug reports and feature requests should be posted on *GitHub* using the
+[*issue system*](https://github.com/TimTaylor/NHSmod11/issues).

@@ -20,16 +20,11 @@ details).
 ## Installation
 
 The development version, which this documentation refers to, can be
-installed from the internal GitLab instance via
+installed from GitHub via
 
     if (!require(remotes)) install.packages("remotes")
 
-    remotes::install_git(
-        "https://gitlab.phe.gov.uk/Timothy.Taylor/NHSmod11.git",
-        subdir="pkg",
-        dependencies = TRUE,
-        build_vignettes = TRUE
-    )
+    remotes::install_github("TimTaylor/NHSmod11")
 
 ## Example
 

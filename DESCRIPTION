@@ -1,14 +1,20 @@
 Package: NHSmod11
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Validate NHS Numbers
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R: person(
+    given = "Tim",
+    family = "Taylor",
+    email = "timothy.taylor@ukhsa.gov.uk",
+    role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0002-8587-7113"))
+Description: Minimal and efficient package to validate that a given NHS number
+    passes the modulo 11 check (see https://www.datadictionary.nhs.uk/attributes/nhs_number.html
+    for details).
+URL: https://github.com/TimTaylor/NHSmod11
+BugReports: https://github.com/TimTaylor/NHSmod11/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 Suggests:
     testthat (>= 3.0.0)
 RoxygenNote: 7.1.2

@@ -1,13 +1,16 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- badges: start -->
 
-# NHSmod11
+[![R-CMD-check](https://github.com/TimTaylor/NHSmod11/workflows/R-CMD-check/badge.svg)](https://github.com/TimTaylor/NHSmod11/actions)
+<!-- badges: end -->
+
+# Overview
 
 <span style="color:red"> ***This package has not yet been code reviewed
 and is not yet used in production. Buyer beware*** </span>
 
-<!-- badges: start -->
-<!-- badges: end -->
+------------------------------------------------------------------------
 
 Minimal and efficient package to validate that a given NHS number passes
 the modulo 11 check (see

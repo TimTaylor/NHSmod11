@@ -1,0 +1,7 @@
+url: ~
+template:
+  bootstrap: 5
+  bootswatch: spacelab
+
+development:
+  mode: unreleased

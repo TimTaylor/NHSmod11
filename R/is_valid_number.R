@@ -4,9 +4,7 @@
 #' modulo 11 check.
 #'
 #' Methods are provided for character and numeric input. Character input should
-#' only contain integer values (e.g. no hyphens or spaces). Options are given
-#' to prioritise either `speed` or `memory` usage (the default, `speed`, should
-#' be fine in most circumstances).
+#' only contain integer values (e.g. no hyphens or spaces).
 #'
 #' @note Validity is determined solely on whether of not the input passes the
 #' modulo 11 check. The number is not verified against numbers issued nor is
@@ -15,8 +13,15 @@
 #' @seealso https://www.datadictionary.nhs.uk/attributes/nhs_number.html for
 #'   details on the validation algorithm.
 #'
-#' @param x An R object.
-#' @param ... Not currently used.
+#' @param x
+#' An R object.
+#'
+#' @param na_as_false `[logical]`
+#' Should NA inputs be treated as invalid (returning FALSE) or missing
+#' (returning `NA`).
+#'
+#' @param ...
+#' Not currently used.
 #'
 #' @return A Logical vector the same length as `x`.
 #'
@@ -39,16 +44,17 @@ is_valid_mod11.default <- function(x, ...) {
 
 #' @rdname is_valid_mod11
 #' @export
-is_valid_mod11.numeric <- function(x, ...) {
+is_valid_mod11.numeric <- function(x, na_as_false = TRUE, ...) {
     x <- as.character(x)
-    is_valid_mod11.character(x)
+    is_valid_mod11.character(x, na_as_false)
 }
 
 #' @rdname is_valid_mod11
 #' @export
-is_valid_mod11.character <- function(x, ...) {
+is_valid_mod11.character <- function(x, na_as_false = TRUE, ...) {
 
     n <- length(x)
+    na_idx <- is.na(x)
 
     # handle zero length input
     if (n == 0L)
@@ -100,7 +106,12 @@ is_valid_mod11.character <- function(x, ...) {
     # ensure return is vector not array
     dim(valid) <- NULL
 
-    # remove the hack and return
-    valid[-length(valid)]
+    # remove the hack
+    valid <- valid[-length(valid)]
 
+    # optionally add back NA
+    if (!na_as_false)
+        valid[na_idx] <- NA
+
+    valid
 }

@@ -8,6 +8,15 @@ test_that("tests from nhsnumber package", {
     expect_false(is_valid_mod11(dat_1[2]))
 })
 
+test_that("tests from nhsnumber package but with NA", {
+    # same as from nhsnumber package (https://cran.r-project.org/package=nhsnumber)
+    dat_1 <- c(1234567881, 1234567890, 9876543210, 2345678901, NA)
+    expected_1 <- c(TRUE, FALSE, TRUE, FALSE, FALSE)
+    expected_2 <- c(TRUE, FALSE, TRUE, FALSE, NA)
+    expect_identical(is_valid_mod11(dat_1), expected_1)
+    expect_identical(is_valid_mod11(dat_1, na_as_false = FALSE), expected_2)
+})
+
 test_that("tests from generator", {
     # from generator here http://danielbayley.uk/nhs-number/
     dat_2 <- c("5390502108", "2788584652", "3510670485", "4001126419",

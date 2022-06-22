@@ -2,7 +2,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/TimTaylor/NHSmod11/workflows/R-CMD-check/badge.svg)](https://github.com/TimTaylor/NHSmod11/actions)
+[![R-CMD-check](https://github.com/timtaylor/NHSmod11/workflows/R-CMD-check/badge.svg)](https://github.com/timtaylor/NHSmod11/actions)
 <!-- badges: end -->
 
 # Overview
@@ -22,7 +22,8 @@ details).
 The development version, which this documentation refers to, can be
 installed from GitHub via
 
-    if (!require(remotes)) install.packages("remotes")
+    if (!require(remotes))
+        install.packages("remotes")
 
     remotes::install_github("TimTaylor/NHSmod11")
 
@@ -41,10 +42,12 @@ dat2 <- c(5390502108, 2788584652, 3510670485, 4001126419, 5309741852)
 is_valid_mod11(dat2)
 #> [1] TRUE TRUE TRUE TRUE TRUE
 
-# these should all be invalid
+# these should all be invalid unless we set the na_as_false argument as FALSE
 dat3 <- c("5390502107", "2788584651", "3510670484", "4001126418", NA_character_)
 is_valid_mod11(dat3)
 #> [1] FALSE FALSE FALSE FALSE FALSE
+is_valid_mod11(dat3, na_as_false = FALSE)
+#> [1] FALSE FALSE FALSE FALSE    NA
 ```
 
 ## Getting help online

@@ -5,24 +5,20 @@
 \alias{is_valid_mod11.default}
 \alias{is_valid_mod11.numeric}
 \alias{is_valid_mod11.character}
-\title{Valid NHS number}
+\title{Validate NHS number}
 \usage{
 is_valid_mod11(x, ...)
 
 \method{is_valid_mod11}{default}(x, ...)
 
-\method{is_valid_mod11}{numeric}(x, na_as_false = TRUE, ...)
+\method{is_valid_mod11}{numeric}(x, ...)
 
-\method{is_valid_mod11}{character}(x, na_as_false = TRUE, ...)
+\method{is_valid_mod11}{character}(x, ...)
 }
 \arguments{
 \item{x}{An R object.}
 
 \item{...}{Not currently used.}
-
-\item{na_as_false}{`[logical]`
-Should NA inputs be treated as invalid (returning FALSE) or missing
-(returning `NA`).}
 }
 \value{
 A Logical vector the same length as `x`.

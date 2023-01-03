@@ -1,4 +1,4 @@
-#' Valid NHS number
+#' Validate NHS number
 #'
 #' Generic for testing whether input is a valid NHS number in terms of the
 #' modulo 11 check.
@@ -15,10 +15,6 @@
 #'
 #' @param x
 #' An R object.
-#'
-#' @param na_as_false `[logical]`
-#' Should NA inputs be treated as invalid (returning FALSE) or missing
-#' (returning `NA`).
 #'
 #' @param ...
 #' Not currently used.
@@ -37,32 +33,39 @@ is_valid_mod11.default <- function(x, ...) {
         sprintf(
             "Not implemented for class %s",
             paste(class(x), collapse = ", ")
-        ),
-        call. = FALSE
+        )
     )
 }
 
 #' @rdname is_valid_mod11
 #' @export
-is_valid_mod11.numeric <- function(x, na_as_false = TRUE, ...) {
+is_valid_mod11.numeric <- function(x, ...) {
+    # It may be a little more efficient to have a dedicated integer method
+    # but the character method provides simple handling for doubles and is still
+    # sufficiently quick
     x <- as.character(x)
-    is_valid_mod11.character(x, na_as_false)
+    is_valid_mod11.character(x, ...)
 }
 
 #' @rdname is_valid_mod11
 #' @export
-is_valid_mod11.character <- function(x, na_as_false = TRUE, ...) {
+is_valid_mod11.character <- function(x, ...) {
 
+    # number of entries to check
     n <- length(x)
-    na_idx <- is.na(x)
 
     # handle zero length input
     if (n == 0L)
         return(logical(0L))
 
+    # handle all NA case
+    na_idx <- is.na(x)
+    if (all(na_idx))
+        return(logical(length = n))
+
     # handle single input
     if (n == 1L) {
-        if (is.na(x) || nchar(x) != 10L)
+        if (nchar(x) != 10L)
             return(FALSE)
         x <- strsplit(x, "", fixed = TRUE)
         x <- suppressWarnings(as.integer(x[[1]]))
@@ -75,11 +78,9 @@ is_valid_mod11.character <- function(x, na_as_false = TRUE, ...) {
         return(checksum == remainder)
     }
 
-    # hack to deal with the all NA case
-    x <- c(x, "1234567890")
-
     # convert incorrect length to NA
-    x[nchar(x) != 10L] <- NA_character_
+    not_length_10 <- nchar(x) != 10L
+    x[not_length_10] <- NA_character_
 
     # create matrix of individual characters as integers
     x <- do.call(rbind, strsplit(x, "", fixed = TRUE))
@@ -106,12 +107,8 @@ is_valid_mod11.character <- function(x, na_as_false = TRUE, ...) {
     # ensure return is vector not array
     dim(valid) <- NULL
 
-    # remove the hack
-    valid <- valid[-length(valid)]
-
-    # optionally add back NA
-    if (!na_as_false)
-        valid[na_idx] <- NA
+    # add back NA
+    valid[na_idx] <- NA
 
     valid
 }

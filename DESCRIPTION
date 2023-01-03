@@ -1,7 +1,7 @@
 Package: NHSmod11
 Type: Package
 Title: Validate NHS Numbers
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: person(
     given = "Tim",
     family = "Taylor",
@@ -11,7 +11,7 @@ Authors@R: person(
 Description: Minimal and efficient package to validate that a given NHS number
     passes the modulo 11 check (see https://www.datadictionary.nhs.uk/attributes/nhs_number.html
     for details).
-URL: https://github.com/TimTaylor/NHSmod11, https://timtaylor.github.io/NHSmod11/
+URL: https://github.com/TimTaylor/NHSmod11
 BugReports: https://github.com/TimTaylor/NHSmod11/issues
 License: MIT + file LICENSE
 Encoding: UTF-8

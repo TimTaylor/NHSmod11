@@ -62,3 +62,8 @@ is_nhs_number(dat3, na_as_false = FALSE)
 
 Bug reports and feature requests should be posted on *GitHub* using the
 [*issue system*](https://github.com/TimTaylor/NHSmod11/issues).
+
+## Alternatives
+The [nhsnumber](https://cran.r-project.org/package=nhsnumber) provides an
+alternative implementation. For a comparison see
+https://github.com/TimTaylor/NHSmod11/issues/1.

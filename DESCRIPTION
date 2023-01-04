@@ -9,8 +9,8 @@ Authors@R: person(
     role = c("aut", "cre"),
     comment = c(ORCID = "0000-0002-8587-7113"))
 Description: Minimal and efficient package to validate that a given NHS number
-    passes the modulo 11 check (see https://www.datadictionary.nhs.uk/attributes/nhs_number.html
-    for details).
+    passes the modulo 11 check (see
+    https://www.datadictionary.nhs.uk/attributes/nhs_number.html for details).
 URL: https://github.com/TimTaylor/NHSmod11
 BugReports: https://github.com/TimTaylor/NHSmod11/issues
 License: MIT + file LICENSE

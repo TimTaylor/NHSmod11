@@ -40,11 +40,15 @@ is_valid_mod11.default <- function(x, ...) {
 #' @rdname is_valid_mod11
 #' @export
 is_valid_mod11.numeric <- function(x, ...) {
-    # note - it may be a little more efficient to have a dedicated integer
+    # note 1 - it may be a little more efficient to have a dedicated integer
     # method but not all possible inputs will be valid integers (i.e. they can
     # be greater than .Machine$integer.max) as the character method already
     # provides simple handling for doubles and is still sufficiently quick it's
     # not really worth it
+
+    # note 2 - scipen can effect the conversion so we temporally increase it
+    old <- options(scipen = 999)
+    on.exit(options(old), add = TRUE)
     x <- as.character(x)
     is_valid_mod11.character(x, ...)
 }

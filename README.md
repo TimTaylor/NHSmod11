@@ -7,8 +7,8 @@
 
 # Overview
 
-<span style="color:red"> ***This package has not yet been code reviewed
-and is not yet used in production. Buyer beware*** </span>
+<span style="color:red"> ***This package has not yet been code
+reviewed.*** </span>
 
 ------------------------------------------------------------------------
 

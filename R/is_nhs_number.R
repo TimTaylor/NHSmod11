@@ -99,6 +99,9 @@ is_nhs_number.character <- function(x, ...) {
     not_length_10 <- nchar(x) != 10L
     x[not_length_10] <- NA_character_
 
+    # ensure we always have one dummy none-NA case (for matrix indexing)
+    x <- c(x, "1234567890")
+
     # create matrix of individual characters as integers
     x <- do.call(rbind, strsplit(x, "", fixed = TRUE))
     dat <- suppressWarnings(as.integer(x))
@@ -126,6 +129,9 @@ is_nhs_number.character <- function(x, ...) {
 
     # add back NA
     valid[na_idx] <- NA
+
+    # remove the dummy case
+    valid <- valid[-length(valid)]
 
     valid
 }

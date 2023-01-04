@@ -5,7 +5,7 @@ output: github_document
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/timtaylor/NHSmod11/workflows/R-CMD-check/badge.svg)](https://github.com/timtaylor/NHSmod11/actions)
+[![R-CMD-check](https://github.com/TimTaylor/NHSmod11/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/TimTaylor/NHSmod11/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ```{r, include = FALSE}

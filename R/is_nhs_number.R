@@ -1,14 +1,17 @@
 #' Validate NHS number
 #'
-#' Generic for testing whether input is a valid NHS number in terms of the
-#' modulo 11 check. Methods are provided for character and numeric input.
-#' Character input should only contain integer values (e.g. no hyphens or
-#' spaces).
+#' `is_nhs_number()` is a generic for testing whether input is a valid NHS
+#' number in terms of the modulo 11 check. Methods are provided for character
+#' and numeric input.
 #'
 #' @note
+#'
 #' Validity is determined solely on whether of not the input passes the modulo
 #' 11 check. The number is not verified against numbers issued nor is any
 #' additional checking of the first nine digits performed.
+#'
+#' Character input should only contain integer values (e.g.
+#' no hyphens or spaces).
 #'
 #' @seealso
 #' https://www.datadictionary.nhs.uk/attributes/nhs_number.html for details on
@@ -24,19 +27,19 @@
 #'
 #' @examples
 #' dat <- c("5390502108", NA_character_, "2788584652", "3510670484")
-#' is_valid_mod11(dat)
+#' is_nhs_number(dat)
 #'
 #' dat <- c(5390502108, NA_real_, 2788584652, 3510670484)
-#' is_valid_mod11(dat)
+#' is_nhs_number(dat)
 #'
 #' @export
-is_valid_mod11 <- function(x, ...) {
-    UseMethod("is_valid_mod11")
+is_nhs_number <- function(x, ...) {
+    UseMethod("is_nhs_number")
 }
 
-#' @rdname is_valid_mod11
+#' @rdname is_nhs_number
 #' @export
-is_valid_mod11.default <- function(x, ...) {
+is_nhs_number.default <- function(x, ...) {
     stop(
         sprintf(
             "Not implemented for class %s",
@@ -45,9 +48,9 @@ is_valid_mod11.default <- function(x, ...) {
     )
 }
 
-#' @rdname is_valid_mod11
+#' @rdname is_nhs_number
 #' @export
-is_valid_mod11.numeric <- function(x, ...) {
+is_nhs_number.numeric <- function(x, ...) {
     # note 1 - it may be a little more efficient to have a dedicated integer
     # method but not all possible inputs will be valid integers (i.e. they can
     # be greater than .Machine$integer.max) as the character method already
@@ -58,12 +61,12 @@ is_valid_mod11.numeric <- function(x, ...) {
     old <- options(scipen = 999)
     on.exit(options(old), add = TRUE)
     x <- as.character(x)
-    is_valid_mod11.character(x, ...)
+    is_nhs_number.character(x, ...)
 }
 
-#' @rdname is_valid_mod11
+#' @rdname is_nhs_number
 #' @export
-is_valid_mod11.character <- function(x, ...) {
+is_nhs_number.character <- function(x, ...) {
 
     # number of entries to check
     n <- length(x)

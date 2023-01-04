@@ -1,17 +1,18 @@
 #' Validate NHS number
 #'
 #' Generic for testing whether input is a valid NHS number in terms of the
-#' modulo 11 check.
+#' modulo 11 check. Methods are provided for character and numeric input.
+#' Character input should only contain integer values (e.g. no hyphens or
+#' spaces).
 #'
-#' Methods are provided for character and numeric input. Character input should
-#' only contain integer values (e.g. no hyphens or spaces).
+#' @note
+#' Validity is determined solely on whether of not the input passes the modulo
+#' 11 check. The number is not verified against numbers issued nor is any
+#' additional checking of the first nine digits performed.
 #'
-#' @note Validity is determined solely on whether of not the input passes the
-#' modulo 11 check. The number is not verified against numbers issued nor is
-#' any additional checking of the first nine digits performed.
-#'
-#' @seealso https://www.datadictionary.nhs.uk/attributes/nhs_number.html for
-#'   details on the validation algorithm.
+#' @seealso
+#' https://www.datadictionary.nhs.uk/attributes/nhs_number.html for details on
+#' the validation algorithm.
 #'
 #' @param x
 #' An R object.
@@ -20,6 +21,13 @@
 #' Not currently used.
 #'
 #' @return A Logical vector the same length as `x`.
+#'
+#' @examples
+#' dat <- c("5390502108", NA_character_, "2788584652", "3510670484")
+#' is_valid_mod11(dat)
+#'
+#' dat <- c(5390502108, NA_real_, 2788584652, 3510670484)
+#' is_valid_mod11(dat)
 #'
 #' @export
 is_valid_mod11 <- function(x, ...) {
